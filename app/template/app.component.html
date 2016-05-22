@@ -1,0 +1,50 @@
+<h2>AngularJS Sample Application</h2>
+<hr/><br /><br />
+
+Component Variable :
+<h1>{{test}}</h1>
+<hr/><br /><br />
+
+Heading text with custom stateless pipe :
+<h1>{{pageHeading | titleCase}}</h1>
+<hr/><br /><br />
+
+Table with custom stateless as well as in-built pipes :<br />
+    <div>
+        Rows to display : <input type="number" step="1" [(ngModel)]="rowCount" max="5" min="0" />
+        <br /><br />        
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Date of Birth</th>
+                    <th>Gender</th>
+                    <th>Scholorship</th>
+                    <th>Scholorship (number filter)</th>
+                    <th>Scholorship (currency filter)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr  *ngFor="let student of students  |  slice:0:rowCount">
+                    <td>
+                        {{ student.name | uppercase }}
+                    </td>
+                    <td>
+                        {{ student.dateOfBirth | date:"dd/MM/yyyy" }}
+                    </td>
+                    <td>
+                        {{ student.gender | lowercase1 }}
+                    </td>
+                    <td>
+                        {{ student.scholorship  }}
+                    </td>
+                    <td>
+                        {{ student.scholorship | number:'2.5-10'}}
+                    </td>
+                    <td>
+                        {{ student.scholorship |  currency :'USD':true}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
